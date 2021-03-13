@@ -15,6 +15,7 @@ namespace UptoboxApi
         public string FullPath { get; set; }
         public string Password { get; set; }
         public int FileCount { get; set; } //only on current folder data
+        //set bytes and get string with real size (B, MB, GB, TB...)
         public string TotalFilesSize { get => _totalFilesSize; set => _totalFilesSize = Utils.SizeSuffix(long.Parse(value)); } //only on current folder data
         public string Hash { get; set; }
         public string Url
