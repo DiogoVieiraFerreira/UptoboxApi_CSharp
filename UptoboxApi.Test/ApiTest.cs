@@ -49,8 +49,7 @@ namespace UptoboxApi.Test
         {
             JObject? linkToUpload = await Api.Get<JObject>("/upload", _token);
             JObject?[] uploadedFiles = await Api.Post<JObject>(
-                $"https:{linkToUpload?["uploadLink"]}",
-                new string[2]
+                $"https:{linkToUpload?["uploadLink"]}", new[]
                 {
                     Path.Join(_directoryProjectPath, "images", "cat.jpg"),
                     Path.Join(_directoryProjectPath, "images", "dog_hello.gif")
@@ -59,27 +58,27 @@ namespace UptoboxApi.Test
             Assert.True(uploadedFiles.Length == 2);
 
             const string actual1 = "cat.jpg";
-            string? expected1 = uploadedFiles?[0]?["files"]?[0]?["name"]?.ToString();
+            string? expected1 = uploadedFiles[0]?["files"]?[0]?["name"]?.ToString();
 
             Assert.AreEqual(expected1, actual1);
             Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles[0]?["files"]?[0]?["url"]));
             Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles[0]?["files"]?[0]?["deleteUrl"]));
             
             const string actual2 = "dog_hello.gif";
-            string? expected2 = uploadedFiles?[1]?["files"]?[0]?["name"]?.ToString();
+            string? expected2 = uploadedFiles[1]?["files"]?[0]?["name"]?.ToString();
 
             Assert.AreEqual(expected2, actual2);
-            Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles?[0]?["files"]?[0]?["url"]));
-            Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles?[0]?["files"]?[0]?["deleteUrl"]));
+            Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles[0]?["files"]?[0]?["url"]));
+            Assert.IsTrue(!string.IsNullOrEmpty((string) uploadedFiles[0]?["files"]?[0]?["deleteUrl"]));
         }
 
         [Test]
         public async Task SearchSpecificFile()
         {
-            string nameOfFile = "cat.jpg";
+            const string nameOfFile = "cat.jpg";
             //upload the file to search it 
             JObject? linkToUpload = await Api.Get<JObject>("/upload", _token);
-            JObject? uploadedFile = await Api.Post<JObject>(
+            await Api.Post<JObject>(
                 $"https:{linkToUpload?["uploadLink"]}",
                 Path.Join(_directoryProjectPath, "images", nameOfFile)
             );
