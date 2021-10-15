@@ -3,7 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using UptoboxApi.Tools;
+using UptoboxApi.Utils.FileConfiguration;
 
 namespace UptoboxApi.Test
 {
