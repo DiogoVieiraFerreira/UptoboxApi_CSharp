@@ -56,10 +56,10 @@ namespace UptoboxApi
         /// <param name="uploadLink">gived by GET call at the next path "/upload"</param>
         /// <param name="filesPath">["C:\file_to_upload.txt", "C:\other_file.txt"]</param>
         /// <returns>Generic Array of the uploaded files data {name, size, url, deleteUrl}</returns>
-        public static async Task<T[]> Post<T>(string uploadLink, string[] filesPath)
+        public static async Task<T?[]> Post<T>(string uploadLink, string[] filesPath)
         {
             int arraySize = filesPath.Count();
-            T[] uploadedFiles = new T[arraySize];
+            T?[] uploadedFiles = new T[arraySize];
             
             for(int i = 0; i < arraySize; i ++)
             {
@@ -75,7 +75,7 @@ namespace UptoboxApi
         /// <param name="uploadLink">gived by GET call at the next path "/upload"</param>
         /// <param name="filePath">"C:\file_to_upload.txt"</param>
         /// <returns>Generic of the uploaded file data {name, size, url, deleteUrl}</returns>
-        public static async Task<T> Post<T>(string uploadLink, string filePath)
+        public static async Task<T?> Post<T>(string uploadLink, string filePath)
         {
             using (var multiForm = new MultipartFormDataContent())
             {

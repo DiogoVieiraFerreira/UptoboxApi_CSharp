@@ -50,16 +50,6 @@ namespace UptoboxApi
                     queryParameters.Path = arguments.Path;
             });
             Console.WriteLine(queryParameters);
-            var a = await Api.Get<JObject>("/upload", _token);
-            // Console.WriteLine(a["uploadLink"]);
-            var b = await Api.Post<JObject>(
-                $"https:{a["uploadLink"]}",
-                new string[2]
-                {
-                    @"C:\Users\noxcaedibux\OneDrive\Images\cat meme.jpg",
-                    @"C:\Users\noxcaedibux\OneDrive\Images\crepeuh.png",
-                });
-            Console.WriteLine(b[0]["files"][0]["name"]);
             // get attributs to detect if it's a dir an upload all files inside it...
             // FileAttributes fileAttributes = File.GetAttributes(filePath);
             // if (fileAttributes.HasFlag(FileAttributes.Directory))
