@@ -20,6 +20,9 @@ jobs:
       run: dotnet restore ./UptoboxApi/UptoboxApi.csproj
     - name: Build
       run: dotnet build ./UptoboxApi/UptoboxApi.csproj --no-restore
+   # Restore, Build and test the code !
+    - name: Restore dependencies
+      run: dotnet restore ./UptoboxApi.Test/UptoboxApi.Test.csproj
     - name: Build Test
       run: dotnet build ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-restore
     - name: Test
