@@ -1,0 +1,7 @@
+﻿namespace UptoboxApi.Tools
+{
+    public class MockFileConfig : IFileConfig
+    {
+        public static string Token => "myTokken";
+    }
+}
