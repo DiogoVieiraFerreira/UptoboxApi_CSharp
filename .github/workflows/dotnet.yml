@@ -24,8 +24,8 @@ jobs:
    # Restore, Build and test the code !
     - name: Create MockFileConfig
       run: | 
-        cp ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs.example ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs
-        sed -i 's/myTokken/${{secrets.TOKEN}}/' ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs
+        cp ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs.example ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs
+        sed -i 's/myTokken/${{secrets.TOKEN}}/' ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs
     - name: Restore Test dependencies
       run: dotnet restore ./UptoboxApi.Test/UptoboxApi.Test.csproj
     - name: Build Test Project
