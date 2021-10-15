@@ -17,18 +17,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
-      run: dotnet restore ./UptoboxApi/UptoboxApi.csproj
-    - name: Build
-      run: dotnet build ./UptoboxApi/UptoboxApi.csproj --no-restore
-   # Restore, Build and test the code !
     - name: Create MockFileConfig
       run: | 
         cp ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs.example ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs
-        sed -i 's/myTokken/${{secrets.TOKEN}}/' ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs
-    - name: Restore Test dependencies
-      run: dotnet restore ./UptoboxApi.Test/UptoboxApi.Test.csproj
-    - name: Build Test Project
-      run: dotnet build ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-restore
-    - name: Test Project
-      run: dotnet test ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-build --verbosity normal
+        sed -i 's/myToken/${{secrets.TOKEN}}/' ./UptoboxApi/Utils/FileConfig/MockFileConfig.cs
+    - name: Build & Test Project
+      run: dotnet test ./UptoboxApi.Test/UptoboxApi.Test.csproj --verbosity normal

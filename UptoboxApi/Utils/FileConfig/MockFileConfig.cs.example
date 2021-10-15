@@ -2,6 +2,6 @@
 {
     public class MockFileConfig : IFileConfig
     {
-        public static string Token => "myTokken";
+        public static string Token => "myToken";
     }
 }
