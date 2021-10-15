@@ -1,6 +1,6 @@
 ﻿using UptoboxApi.Utils.FileConfiguration;
 
-namespace UptoboxApi.Tools
+namespace UptoboxApi.Utils.FileConfiguration
 {
     public class MockFileConfig : IFileConfig
     {
