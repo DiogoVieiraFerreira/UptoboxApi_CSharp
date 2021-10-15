@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: mcr.microsoft.com/dotnet/sdk:5.0
+    environment: UPTOBOX
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -21,9 +22,13 @@ jobs:
     - name: Build
       run: dotnet build ./UptoboxApi/UptoboxApi.csproj --no-restore
    # Restore, Build and test the code !
-    - name: Restore dependencies
+    - name: Create MockFileConfig
+      run: | 
+        cp ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs.example ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs
+        sed -i 's/myTokken/${{secrets.TOKEN}}/' ./UptoboxApi/UptoboxApi/Utils/FileConfig/MockFileConfig.cs
+    - name: Restore Test dependencies
       run: dotnet restore ./UptoboxApi.Test/UptoboxApi.Test.csproj
-    - name: Build Test
+    - name: Build Test Project
       run: dotnet build ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-restore
-    - name: Test
+    - name: Test Project
       run: dotnet test ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-build --verbosity normal
