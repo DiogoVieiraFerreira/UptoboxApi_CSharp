@@ -20,5 +20,7 @@ jobs:
       run: dotnet restore ./UptoboxApi/UptoboxApi.csproj
     - name: Build
       run: dotnet build ./UptoboxApi/UptoboxApi.csproj --no-restore
+    - name: Build Test
+      run: dotnet build ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-restore
     - name: Test
       run: dotnet test ./UptoboxApi.Test/UptoboxApi.Test.csproj --no-build --verbosity normal
