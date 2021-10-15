@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using Newtonsoft.Json.Linq;
-using UptoboxApi.Utils.FileConfig;
+using UptoboxApi.Utils.FileConfiguration;
 
 namespace UptoboxApi
 {

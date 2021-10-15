@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using UptoboxApi.Utils.FileConfig;
+using UptoboxApi.Tools;
 
 namespace UptoboxApi.Test
 {

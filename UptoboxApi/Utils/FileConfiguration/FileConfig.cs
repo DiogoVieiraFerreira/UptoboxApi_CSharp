@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace UptoboxApi.Utils.FileConfig
+namespace UptoboxApi.Utils.FileConfiguration
 {
     public class FileConfig : IFileConfig
     {

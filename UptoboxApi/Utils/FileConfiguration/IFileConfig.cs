@@ -1,4 +1,4 @@
-﻿namespace UptoboxApi.Utils.FileConfig
+﻿namespace UptoboxApi.Utils.FileConfiguration
 {
     public interface IFileConfig
     {
